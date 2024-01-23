@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Member You Up</h1>
+    <p><%=currentUser._id%></p>
+    <form action="/member-up" method="POST">
+      <label for="member">Have you been given the sec code?</label>
+      <input name="memberstat" placeholder="Enter Here" type="text" required />
+      <input type="hidden" name="getUser" value="<%=currentUser._id%>" />
+
+      <button>Join the Club</button>
+    </form>
+    <% if (errors && errors.length > 0) { %>
+    <ul>
+      <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } else { %> <% } %>
+  </body>
+</html>

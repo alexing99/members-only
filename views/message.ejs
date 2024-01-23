@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Create Post</h1>
+    <p><%= currentUser.userName %></p>
+    <form action="/message" method="POST">
+      <label for="message">Go On and Go Off</label>
+      <input name="message" placeholder="..." type="textbox" required />
+      <!-- <label for="lastname">Last Name</label>
+      <input name="lastname" placeholder="Last Name" type="text" required />
+      <label for="username">Username</label>
+      <input name="username" placeholder="username" type="text" />
+      <label for="password">Password</label>
+      <input name="password" type="password" required />
+      <label for="confpassword">Confirm Password</label>
+      <input name="confpassword" type="password" required />
+      <label for="admin">Admin</label>
+      <input name="admin" type="checkbox" /> -->
+
+      <input
+        type="hidden"
+        name="getUser"
+        value="<%=currentUser.userName
+      %>"
+      />
+      <button>Post</button>
+    </form>
+  </body>
+</html>

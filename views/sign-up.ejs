@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign You Up</h1>
+    <form action="/sign-up" method="POST">
+      <label for="firstname">First Name</label>
+      <input name="firstname" placeholder="First Name" type="text" required />
+      <label for="lastname">Last Name</label>
+      <input name="lastname" placeholder="Last Name" type="text" required />
+      <label for="username">Username</label>
+      <input name="username" placeholder="username" type="text" />
+      <label for="password">Password</label>
+      <input name="password" type="password" required />
+      <label for="confpassword">Confirm Password</label>
+      <input name="confpassword" type="password" required />
+      <label for="admin">Admin</label>
+      <input name="admin" type="checkbox" />
+
+      <button>Sign Up</button>
+    </form>
+    <% if (errors && errors.length > 0) { %>
+    <ul>
+      <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } else { %> <% } %>
+  </body>
+</html>

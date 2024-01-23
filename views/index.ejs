@@ -1,0 +1,69 @@
+<!-- welcome, 
+if no user, login or sign up link
+if user
+    show message board
+if user member
+    show sec messahe board -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <% if (currentUser ) {%>
+    <h1>WELCOME BACK <%= currentUser.userName %></h1>
+    <a href="/log-out">LOG OUT</a>
+
+    <% if (feed && feed.length > 0) {%><% if (currentUser.memberStatus ===
+    "nonmember") {%>
+    <h5>Become a member?</h5>
+    <a href="/member-up">Member Up </a>
+    <h1>Messages</h1>
+    <ul>
+      <% feed.forEach(function(message) { %>
+      <li>
+        <p>"<%= message.message %>"</p>
+        <p><%= message.date %></p>
+      </li>
+      <% }); %>
+    </ul>
+    <a href="/message">Post</a>
+
+    <% } else if (currentUser.memberStatus === "member") {%>
+    <h1>Messages</h1>
+    <ul>
+      <% feed.forEach(function(message) { %>
+      <li>
+        <p>"<%= message.message %>"</p>
+        <p>-<%= message.author %></p>
+        <p><%= message.date %></p>
+        <% if (currentUser.admin) {%>
+        <form action="/delete" method="POST">
+          <input type="hidden" name="getMess" value="<%=message._id%>" />
+          <button type="submit">Delete Post</button>
+        </form>
+        <%}; %>
+      </li>
+      <% }); %>
+    </ul>
+    <a href="/message">Post</a>
+    <p>No messages yet</p>
+
+    <%} %> <% } else { %> %><%} %> <% } else { %>
+    <h1>please log in</h1>
+    <form action="/log-in" method="POST">
+      <label for="username">Username</label>
+      <input name="username" placeholder="Username" type="text" />
+      <label for="password">Password</label>
+      <input name="password" type="password" />
+      <button>Log In</button>
+    </form>
+
+    <h2>New?</h2>
+    <a href="/sign-up">Create Account</a>
+
+    <%}%>
+  </body>
+</html>
